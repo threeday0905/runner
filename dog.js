@@ -9,6 +9,8 @@ var query_data = {
   };
 
 
+var sentCount = 0;
+
 
 function PostCode() {
   // Build the post string from an object
@@ -33,6 +35,12 @@ function PostCode() {
       res.on('error', console.error);
       res.on('data', function (chunk) {
           console.log('Response: ' + chunk);
+          console.log('sent count' + (++sentCount));
+
+          if (sentCount >= 700) {
+            console.log('completted');
+            process.exit();
+          }
       });
   });
 
@@ -64,4 +72,4 @@ function tick() {
 }
 
 tick();
-setInterval(tick, 30 * 1000);
+setInterval(ONCE_TICK);
