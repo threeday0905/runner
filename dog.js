@@ -35,7 +35,7 @@ function PostCode() {
       res.on('error', console.error);
       res.on('data', function (chunk) {
           console.log('Response: ' + chunk);
-          console.log('sent count' + (++sentCount));
+          console.log('sent count: ' + (++sentCount));
 
           if (sentCount >= 700) {
             console.log('completted');
