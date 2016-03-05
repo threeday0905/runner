@@ -72,4 +72,4 @@ function tick() {
 }
 
 tick();
-setInterval(ONCE_TICK);
+setInterval(tick, ONCE_TICK);
