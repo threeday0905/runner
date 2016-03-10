@@ -2,10 +2,10 @@
 var querystring = require('querystring');
 var https = require('https');
 
-var data = {"action":"feedPet","signature":"720661163a161a3bbe5c1ecb8f513056","id":2,"params":{"revision":"44","user":"761982030492442","foods":[{"food":1,"pet":1},{"food":1,"pet":2},{"food":1,"pet":3},{"food":1,"pet":4},{"food":1,"pet":5},{"food":1,"pet":6}]}};
+var data = {"action":"feedPet","signature":"720661163a161a3bbe5c1ecb8f513056","id":2,"params":{"revision":"44","user":"761982030492442","foods":[{"food":1,"pet":1},{"food":1,"pet":2}/*,{"food":1,"pet":3}*/,{"food":1,"pet":4},{"food":1,"pet":5},{"food":1,"pet":6}]}};
 
 var query_data = {
-    query: '{"action":"feedPet","signature":"720661163a161a3bbe5c1ecb8f513056","id":2,"params":{"revision":"44","user":"761982030492442","foods":[{"food":1,"pet":1},{"food":1,"pet":2},{"food":1,"pet":3},{"food":1,"pet":4},{"food":1,"pet":5},{"food":1,"pet":6}]}}'
+    query: JSON.stringify(data)
   };
 
 
