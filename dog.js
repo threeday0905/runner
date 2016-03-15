@@ -37,7 +37,7 @@ function PostCode() {
           console.log('Response: ' + chunk);
           console.log('sent count: ' + (++sentCount));
 
-          if (sentCount >= 700) {
+          if (sentCount >= 35) {
             console.log('completted');
             process.exit();
           }
