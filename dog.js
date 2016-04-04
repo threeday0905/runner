@@ -64,10 +64,9 @@ function tick() {
         }
 
         ticker = TARGET_TICK;
-        console.log('request sent!');
-        console.log(new Date());
+        console.log('request sent! - ' + new Date());
     } else {;
-        console.log('tick ' + ticker);
+        console.log('tick ' + ticker + ' - ' + new Date());
     }
     ticker--;
 }
