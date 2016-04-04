@@ -36,11 +36,6 @@ function PostCode() {
       res.on('data', function (chunk) {
           console.log('Response: ' + chunk);
           console.log('sent count: ' + (++sentCount));
-
-          if (sentCount >= 35) {
-            console.log('completted');
-            process.exit();
-          }
       });
   });
 
@@ -62,9 +57,15 @@ var ticker = 0;
 function tick() {
     if (ticker === 0) {
         //$('#submit-request').click();
-        PostCode();
+        try {
+            PostCode();
+        } catch (ex) {
+            console.log('post error', ex);
+        }
+
         ticker = TARGET_TICK;
         console.log('request sent!');
+        console.log(new Date());
     } else {;
         console.log('tick ' + ticker);
     }
