@@ -38,8 +38,14 @@ function PostCode() {
       res.setEncoding('utf8');
       res.on('error', console.error);
       res.on('data', function (chunk) {
-          console.log('Response: ' + chunk);
-          console.log('sent count: ' + (++sentCount));
+          var data = JSON.parse(chunk);
+
+          if (data.error) {
+            console.error(data.error);
+          } else {
+            console.log('Response: ' + chunk);
+            console.log('sent count: ' + (++sentCount));
+          }
       });
   });
 
@@ -51,8 +57,8 @@ function PostCode() {
 }
 
 
-var TARGET_SECOND = 330 * 1000; // 320 sec = 5m 30 s
-var ONCE_TICK = 30 * 1000;
+var TARGET_SECOND = 310 * 1000; // 320 sec = 5m 30 s
+var ONCE_TICK = 10 * 1000;
 
 var TARGET_TICK = TARGET_SECOND / ONCE_TICK;
 
@@ -69,8 +75,10 @@ function tick() {
 
         ticker = TARGET_TICK;
         console.log('request sent! - ' + new Date());
-    } else {;
-        console.log('tick ' + ticker + ' - ' + new Date());
+    } else {
+        if (ticker <= 5 || ticker === TARGET_TICK - 1 || ticker % 5 === 0) {
+          console.log('tick ' + ticker + ' - ' + new Date());
+        }
     }
     ticker--;
 }
