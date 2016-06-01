@@ -5,6 +5,7 @@ var https = require('https');
 var data = {"action":"feedPet","signature":"720661163a161a3bbe5c1ecb8f513056","id":2,"params":{"revision":"44","user":"761982030492442","foods":[
   {"food":1,"pet":10},
   {"food":1,"pet":11},
+  {"food":1,"pet":13},
   {"food":1,"pet":14}
 ]}};
 
@@ -57,8 +58,8 @@ function PostCode() {
 }
 
 
-var TARGET_SECOND = 310 * 1000; // 320 sec = 5m 30 s
-var ONCE_TICK = 10 * 1000;
+var TARGET_SECOND = 315 * 1000; // 320 sec = 5m 30 s
+var ONCE_TICK = 5 * 1000;
 
 var TARGET_TICK = TARGET_SECOND / ONCE_TICK;
 
@@ -85,3 +86,4 @@ function tick() {
 
 tick();
 setInterval(tick, ONCE_TICK);
+
