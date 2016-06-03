@@ -3,10 +3,7 @@ var querystring = require('querystring');
 var https = require('https');
 
 var data = {"action":"feedPet","signature":"720661163a161a3bbe5c1ecb8f513056","id":2,"params":{"revision":"44","user":"761982030492442","foods":[
-  {"food":1,"pet":10},
-  {"food":1,"pet":11},
-  {"food":1,"pet":13},
-  {"food":1,"pet":14}
+  {"food":1,"pet":13}
 ]}};
 
 var query_data = {
