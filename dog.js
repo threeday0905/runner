@@ -3,7 +3,7 @@ var querystring = require('querystring');
 var https = require('https');
 
 var data = {"action":"feedPet","signature":"720661163a161a3bbe5c1ecb8f513056","id":2,"params":{"revision":"44","user":"761982030492442","foods":[
-  {"food":1,"pet":13}
+  {"food":1,"pet":16}, {"food":1,"pet":17}
 ]}};
 
 var query_data = {
@@ -12,7 +12,7 @@ var query_data = {
 
 
 var sentCount = 0;
-
+var MAX_COUNT = 99999999;
 
 function PostCode() {
   // Build the post string from an object
@@ -36,14 +36,23 @@ function PostCode() {
       res.setEncoding('utf8');
       res.on('error', console.error);
       res.on('data', function (chunk) {
-          var data = JSON.parse(chunk);
+        try {
+            var data = JSON.parse(chunk);
 
-          if (data.error) {
-            console.error(data.error);
-          } else {
-            console.log('Response: ' + chunk);
-            console.log('sent count: ' + (++sentCount));
-          }
+            if (data.error) {
+              console.error(data.error);
+            } else {
+              console.log('Response: ' + chunk);
+              console.log('sent count: ' + (++sentCount));
+            }
+
+            if (sentCount === MAX_COUNT) {
+              process.exit();
+            }
+        } catch (ex) {
+            console.error(ex);
+        }
+
       });
   });
 
